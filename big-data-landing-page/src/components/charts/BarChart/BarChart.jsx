@@ -9,12 +9,12 @@ import './BarChart.css'
 
 // Paleta de colores de la aplicación asignada a cada categoría
 const CATEGORY_COLORS = {
-  'SERVICIOS DEFICIENTES':    '#274c77',
-  'COBROS Y FINANZAS':        '#6096ba',
-  'POSTVENTA Y CALIDAD':      '#a3cef1',
-  'LOGISTICA Y ENTREGA':      '#8b8c89',
-  'INFORMACION Y CONTRATOS':  '#3a7ca5',
-  'OTROS / VARIOS':           '#b8cfe8',
+  'SERVICIOS DEFICIENTES': '#274c77',
+  'COBROS Y FINANZAS': '#6096ba',
+  'POSTVENTA Y CALIDAD': '#a3cef1',
+  'LOGISTICA Y ENTREGA': '#8b8c89',
+  'INFORMACION Y CONTRATOS': '#3a7ca5',
+  'OTROS / VARIOS': '#b8cfe8',
 }
 
 const MARGIN = { top: 24, right: 20, bottom: 48, left: 64 }
@@ -192,15 +192,15 @@ export default function BarChart({ data }) {
       })
 
     // Animación de entrada
-    yearGroups.selectAll('.bar')
-      .attr('y', height)
-      .attr('height', 0)
-      .transition()
-      .duration(600)
-      .delay((_, i) => i * 30)
-      .ease(d3.easeCubicOut)
-      .attr('y', d => yScale(d.value))
-      .attr('height', d => height - yScale(d.value))
+    // yearGroups.selectAll('.bar')
+    //   .attr('y', height)
+    //   .attr('height', 0)
+    //   .transition()
+    //   .duration(600)
+    //   .delay((_, i) => i * 30)
+    //   .ease(d3.easeCubicOut)
+    //   .attr('y', d => yScale(d.value))
+    //   .attr('height', d => height - yScale(d.value))
 
   }, [data, visibleCategories, hoveredCategory, years, matrix])
 
