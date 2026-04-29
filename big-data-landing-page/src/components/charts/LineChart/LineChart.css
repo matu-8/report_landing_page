@@ -1,0 +1,220 @@
+/* LineChart.css */
+
+.line-chart-section {
+  padding: var(--space-3xl) 0;
+  background: var(--color-bg);
+}
+
+.line-chart-section__header {
+  margin-bottom: var(--space-2xl);
+}
+
+.line-chart-section__tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  background: rgba(96, 150, 186, 0.1);
+  border: 1px solid rgba(96, 150, 186, 0.25);
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin-bottom: var(--space-sm);
+}
+
+.line-chart-section__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.line-chart-section__subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  max-width: 620px;
+  line-height: 1.6;
+}
+
+.line-chart-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-xl);
+  transition: box-shadow var(--transition-normal);
+}
+
+.line-chart-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.line-chart-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Líneas */
+.line-path {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: opacity var(--transition-fast), stroke-width var(--transition-fast);
+}
+
+.line-chart-svg.has-hover .line-path:not(.line-path--hovered) {
+  opacity: 0.15;
+}
+
+.line-path--hovered {
+  stroke-width: 3.5;
+}
+
+/* Puntos */
+.line-dot {
+  cursor: pointer;
+  transition: r var(--transition-fast), filter var(--transition-fast),
+              opacity var(--transition-fast);
+}
+
+.line-dot:hover {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.line-chart-svg.has-hover .line-dot:not(.line-dot--hovered) {
+  opacity: 0.15;
+}
+
+/* Área bajo la línea */
+.line-area {
+  opacity: 0.07;
+  transition: opacity var(--transition-fast);
+}
+
+.line-chart-svg.has-hover .line-area:not(.line-area--hovered) {
+  opacity: 0;
+}
+
+.line-chart-svg.has-hover .line-area--hovered {
+  opacity: 0.12;
+}
+
+/* Grid */
+.line-grid-line {
+  stroke: var(--color-border);
+  stroke-dasharray: 4 3;
+  stroke-width: 1;
+  opacity: 0.7;
+}
+
+/* Ejes */
+.line-axis text {
+  font-family: var(--font-body);
+  font-size: 12px;
+  fill: var(--color-text-muted);
+}
+
+.line-axis .domain,
+.line-axis .tick line {
+  stroke: var(--color-border);
+}
+
+.line-axis-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  fill: var(--color-neutral);
+}
+
+/* Leyenda */
+.line-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-lg);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.line-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.line-legend-item:hover,
+.line-legend-item.is-hovered {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.line-legend-item.is-dimmed {
+  opacity: 0.35;
+}
+
+.line-legend-swatch {
+  width: 22px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Tooltip */
+.line-chart-tooltip {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  box-shadow: var(--shadow-lg);
+  max-width: 220px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.line-chart-tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.line-chart-tooltip__category {
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.line-chart-tooltip__value {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.line-chart-tooltip__year {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+}
+
+@media (max-width: 640px) {
+  .line-chart-card { padding: var(--space-md) var(--space-sm); }
+  .line-chart-legend { gap: var(--space-xs) var(--space-md); }
+}
