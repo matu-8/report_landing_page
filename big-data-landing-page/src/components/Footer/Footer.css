@@ -1,0 +1,107 @@
+/* Footer.css */
+
+.footer {
+  background: var(--color-primary);
+  color: rgba(255, 255, 255, 0.75);
+  padding: var(--space-2xl) 0;
+  margin-top: var(--space-3xl);
+  border-top: 1px solid rgba(163, 206, 241, 0.15);
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.footer__title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: var(--space-xs);
+}
+
+.footer__description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  max-width: 480px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-sm);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.footer__meta-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: rgba(163, 206, 241, 0.12);
+  border: 1px solid rgba(163, 206, 241, 0.2);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.footer__divider {
+  grid-column: 1 / -1;
+  height: 1px;
+  background: rgba(163, 206, 241, 0.12);
+  margin: var(--space-lg) 0 var(--space-md);
+}
+
+.footer__bottom {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.footer__tech {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.footer__tech-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  background: rgba(163, 206, 241, 0.08);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 640px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+  }
+  .footer__meta {
+    align-items: flex-start;
+  }
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

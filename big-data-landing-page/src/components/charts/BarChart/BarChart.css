@@ -1,0 +1,219 @@
+/* BarChart.css */
+
+.bar-chart-section {
+  padding: var(--space-3xl) 0;
+  background: var(--color-bg);
+}
+
+.bar-chart-section__header {
+  margin-bottom: var(--space-2xl);
+}
+
+.bar-chart-section__tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  background: rgba(96, 150, 186, 0.1);
+  border: 1px solid rgba(96, 150, 186, 0.25);
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin-bottom: var(--space-sm);
+}
+
+.bar-chart-section__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.bar-chart-section__subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  max-width: 620px;
+  line-height: 1.6;
+}
+
+/* Wrapper del gráfico */
+.bar-chart-wrapper {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-xl) var(--space-xl) var(--space-md);
+  overflow: hidden;
+  transition: box-shadow var(--transition-normal);
+}
+
+.bar-chart-wrapper:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* SVG */
+.bar-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ejes */
+.bar-chart-svg .axis-x text,
+.bar-chart-svg .axis-y text {
+  font-family: var(--font-body);
+  font-size: 12px;
+  fill: var(--color-text-muted);
+}
+
+.bar-chart-svg .axis-x .domain,
+.bar-chart-svg .axis-y .domain {
+  stroke: var(--color-border);
+}
+
+.bar-chart-svg .axis-x .tick line,
+.bar-chart-svg .axis-y .tick line {
+  stroke: var(--color-border);
+}
+
+/* Grid lines */
+.bar-chart-svg .grid-line {
+  stroke: var(--color-border);
+  stroke-dasharray: 4 3;
+  stroke-width: 1;
+  opacity: 0.7;
+}
+
+/* Barras */
+.bar-chart-svg .bar {
+  transition: opacity var(--transition-fast), filter var(--transition-fast);
+  cursor: pointer;
+}
+
+.bar-chart-svg .bar:hover {
+  filter: brightness(1.12);
+}
+
+.bar-chart-svg.has-hover .bar:not(.bar--hovered) {
+  opacity: 0.35;
+}
+
+/* Etiquetas de eje X (años) */
+.bar-chart-svg .year-label {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--color-primary);
+}
+
+/* Título del eje Y */
+.bar-chart-svg .axis-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  fill: var(--color-neutral);
+  letter-spacing: 0.03em;
+}
+
+/* Leyenda */
+.bar-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-lg);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.bar-chart-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+              color var(--transition-fast), opacity var(--transition-fast);
+  user-select: none;
+}
+
+.bar-chart-legend__item:hover {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.bar-chart-legend__item.is-active {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.bar-chart-legend__item.is-dimmed {
+  opacity: 0.4;
+}
+
+.bar-chart-legend__swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* Tooltip */
+.bar-chart-tooltip {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  box-shadow: var(--shadow-lg);
+  max-width: 220px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.bar-chart-tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bar-chart-tooltip__category {
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.bar-chart-tooltip__value {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.bar-chart-tooltip__year {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.65);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .bar-chart-wrapper {
+    padding: var(--space-md) var(--space-sm);
+  }
+  .bar-chart-legend {
+    gap: var(--space-xs) var(--space-md);
+  }
+}
